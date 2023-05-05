@@ -8,7 +8,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
 2. **Self-Consistency Improves Chain of Thought Reasoning in Language Models.**  [[pdf](https://arxiv.org/abs/2203.11171)] 2022.3
 
-   <img src="pic\1.png" style="zoom:80%;" />
+   ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/1.png)
 
    简单的来说，LLM在面对一个推理问题时，可能采用多种推理路径，这些推理路径可以被分为两个集合——正确的路径和不正确的，而对于正确路径的集合，他们的最终答案都是一样的，也就是说这个答案是**自洽的**（self-consistency）。
 
@@ -20,7 +20,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
 3. **STaR: Self-Taught Reasoner Bootstrapping Reasoning With Reasoning.**  [[pdf](https://arxiv.org/abs/2203.14465)] 2022.3
 
-   ![](pic\2.png)
+   ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/2.png)
 
    提出了一种用于迭代性微调LLM的方法，方法是使用一种类似数据增强的手段生成一个数据集，再使用该数据集微调模型：对于一个问题，把它输入LLM之后，1）如果答案正确，则将其加入到数据集中，2）如果答案不正确，则把正确答案作为提示告诉他，再让他以此为提示生成一个答案，再把该答案加入数据集中，之后使用该数据集微调模型，并且还能够不断重复这一过程达到迭代优化的效果。这一过程（技术）叫做STaR，伪代码如下：
    ![](pic\3.png)
@@ -45,7 +45,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
 9. :triangular_flag_on_post:**Least-to-Most Prompting Enables Complex Reasoning in Large Language Models.**[[pdf](https://arxiv.org/abs/2205.10625)] 2022.5
 
-   <img src="pic\4.png" style="zoom:67%;" />
+   ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/4.png)
 
    这篇文章的思路来自于教育心理学的理论：教学生学习新技能时，老师们一般会使用循序渐进的提示序列。对LLM也是同理，我们可以先教他拆解问题，再一个一个地解决拆解后的子问题（阶段一：Problem reduction；阶段二：Sequentially solve subquestions）。
 
@@ -127,13 +127,13 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     主要是为了解决LLM在多步骤逻辑推理问题上表现不佳的问题，作者提出了一种选择-推理交互进行的CoT框架，利用预先训练的LLM作为通用处理模块，并在选择和推理之间交替，以生成一系列可解释的、随意的推理步骤，从而得出最终答案。
 
-    ![](pic\19.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/19.png)
 
     具体来说，selection模块负责从few-shot prompt中选择出和question相关的信息，inference模块负责为选择出的信息推理出新的fact，假如这个fact不是最终问题需要的final-answer，就把新的fact加入到context中，重复之前的步骤，直到inference模块生成了可以直接回答最终问题的答案。
 
 11. **On the Advance of Making Language Models Better Reasoners.** [[pdf](https://arxiv.org/abs/2206.02336)] 2022.6
 
-    ![](pic\5.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/5.png)
 
     这篇可以配合第2篇一起看，第2篇主要是引导语言模型在产生最终答案之前生成一系列推理步骤，并使用self-consistency机制获得较好的结果。在这种思路的基础上，这篇研究沿用了这种“条条大路通罗马”的思路，并且更侧重**多元性**(多元性的prompt$\rightarrow$多元性的推理步骤$\rightarrow$多元性的答案)
 
@@ -225,7 +225,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
 19. **Compositional Semantic Parsing with Large Language Models.** [[pdf](https://arxiv.org/abs/2209.15003)] 2022.9
 
-    ![](pic\6.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/6.png)
 
     这篇得配合着第9篇Least-to-most prompting一起看，回看Least-to-most这篇文章，其prompt的第一个stage是通过几个示例教会LLM把问题拆解出来，之后再去一步步的解决拆解后的问题。但是拆解问题其实是很难通过几个例子就教会的，尤其对于复杂问题，我们要为LLM设计一个拆解问题的流程，这就是**Compositional Semantic Parsing with Large Language Models**这篇文章要解决的问题。作者提出了以下三个solution：
 
@@ -276,13 +276,13 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     ReAct提示llm以交错的方式生成与任务相关的口头推理跟踪和操作，这允许模型执行动态推理，以创建、维护和调整高级行动计划(行动的理由)，同时还与外部环境(例如维基百科)交互，将额外的信息纳入推理(行动到理由)。
 
-    ![](pic\7.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/7.png)
 
-    ![](pic\8.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/8.png)
 
 25. **Ask Me Anything: A simple strategy for prompting language models.** [[pdf](https://arxiv.org/abs/2210.02441)], [[code](https://github.com/HazyResearch/ama_prompting)] 2022.10
 
-    ![](pic\9.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/9.png)
 
     这篇工作的motivation是作者发现对于question-answer(QA) prompts 来说，开放式的prompt（比如：Who went to the park?）相较于限制式的prompt来说（比如：John went to the park. Output True or False）效果更好。并且构造一个很完善的（这里的完善可以理解成包含了多角度、细节丰富的上下文）prompt是很耗时耗力的，因此作者提出了一种聚合多个有效但不完善的提示的预测方法，以提高在广泛的模型和任务中的提示性能。
 
@@ -292,7 +292,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
 27. **Large Language Models Can Self-Improve.** [[pdf](https://arxiv.org/abs/2210.11610)] 2022.10
 
-    ![](pic\10.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/10.png)
 
     这项工作探究了LLM的自我迭代性能，证明了LLM也能够仅使用未标记的数据集进行自我改进：先使用预先训练过的LLM，使用思维链提示和自一致性为未标记的问题生成“高置信”的理性增强答案，并使用这些自生成的解决方案作为目标输出对LLM进行fine-tuning。
 
@@ -302,7 +302,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     2. 第二步是数据增强，即使用上一步LLM自生成的最优推理路径（答案）构造一个用于fine-tuning的数据。同时为了防止过拟合，我们希望用于fine-tuning的数据中不止包含CoT格式的输入输出，还要包含那些朴素直白的回答，具体构造方法如下图所示。
 
-       ![](pic\11.png)
+       ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/11.png)
 
     3. 使用增强后的数据重新构造prompt和question，再输入到LLM中微调，达到模型自我迭代升级的效果。生成question的方法
 
@@ -314,7 +314,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     把CoT写成了python代码的形式
 
-    ![](pic\12.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/12.png)
 
 30. **Program of Thoughts Prompting: Disentangling Computation from Reasoning for Numerical Reasoning Tasks.** [[pdf](https://arxiv.org/abs/2211.12588)] 2022.11
 
@@ -330,7 +330,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     具体实现过程如下图所示：
 
-    ![](pic\13.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/13.png)
 
     第一阶段和之前的方法没什么不同，主要是第二阶段使用LLM本身做验证器去为候选路径生成评分这里，如何定义“评分”任务是最关键的。作者采用的思路是，使用LLM生成的答案回推给定的条件，如果回推的结果一致，则说明LLM生成的答案是可信的（高分的）。
 
@@ -346,7 +346,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     用CoT和LLM生成的结果去fine-tuning小型的语言模型，研究结果表明该方法显著提高了小模型在一系列不同任务上的表现，并且具有较高的样本效率，在许多情况下甚至可以达到或超过教师的表现。
 
-    ![](pic\14.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/14.png)
 
 36. **Large Language Models are Versatile Decomposers: Decompose Evidence and Questions for Table-based Reasoning**  [[pdf](https://arxiv.org/abs/2301.13808)] 2023.02
 
@@ -356,7 +356,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     一项关于多模态思维链的工作，作者在《Universal Multimodal Representation for Language Understanding》的基础上，通过融合多模态的特征去**fine-tune** LLM（**不是prompt**）。并且这项工作还有一点比较亮眼：Multimodal-CoT这个模型只用了10亿个参数，就比之前最先进的LLM (GPT-3.5)高出16个百分点(75.17%→91.68%的精度)，甚至超过了ScienceQA基准测试中的人类表现。
 
-    ![](pic\15.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/15.png)
 
     在实验部分，作者先尝试了仅使用text模态的数据去微调一个$UnifiedQA_{BASE}$模型。这个任务被建模为一个文本生成问题，其中模型将文本信息作为输入，并生成由基本原理和答案组成的输出序列。结果发现单模态下CoT并不能提升模型性能。通过错误归因，发现64%的推理不能得到正确结果，是由于视觉特征缺失。比如上图中，由于缺失了Vision维度的特征，模型会得出一个磁铁的S端离另一个磁铁的S端更近的情况。但添加了视觉特征就能修正回正确结果。
 
@@ -364,13 +364,13 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     第一步中，研究使用Transformer获得language特征，使用DETR获得视觉特征，然后使用投影矩阵将二者维度统一并拼接。
 
-    ![](pic\16.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/16.png)
 
     第三步的模型使用了上图所示的pipeline，这是一个两阶段的框架，之所以设计成两阶段的，是因为这并不是一个大规模语言模型，其参数量为1 billion，但是据之前的研究，LM参数越少，其胡诌的可能性也越大，这一现象被称为hallucination（幻觉），所以为了在小模型上克服hallucination，作者把模型设计成了“推理”和“定论”两阶段分离的结构。论文说，这是因为他们在做text单模态推理时发现，如果在生成答案之前生成推理，会造成性能的下降，这可能是因为tokens长度的限制导致了模型过早生成答案，因此采用两阶段分离的设计也许能够摆脱这种情况的干扰。
 
     下图是Multimodal-CoT的完整伪代码。
 
-    <img src="pic\17.png" style="zoom: 80%;" />
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/17.png)
 
 38. **Large Language Models Can Be Easily Distracted by Irrelevant Context**  [[pdf](https://arxiv.org/abs/2302.00093)] 2023.02
 
@@ -380,7 +380,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
 39. **Active Prompting with Chain-of-Thought for Large Language Models**  [[pdf](https://arxiv.org/abs/2302.12246)] 2023.02
 
-    ![](pic\18.png)
+    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/18.png)
 
     原始的思维链工作中，我们往prompt中添加的例子要么是从训练集中随机选择的，要么是人工手动编写的，但是由于推理任务的性质在难度、范围、领域等方面存在显著差异，我们不知道什么样的问题最值得注释。同样不清楚的是，一组特定的范例是否能最好地引出所需的信息。不过，好消息是，为不同的任务注释8个示例是很简单的，只用花费很少的金钱和人力。据此，我们确定了一个关键问题，即如何确定哪些问题是最重要和最有助于注释的。
 
