@@ -23,7 +23,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
    ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/2.png)
 
    提出了一种用于迭代性微调LLM的方法，方法是使用一种类似数据增强的手段生成一个数据集，再使用该数据集微调模型：对于一个问题，把它输入LLM之后，1）如果答案正确，则将其加入到数据集中，2）如果答案不正确，则把正确答案作为提示告诉他，再让他以此为提示生成一个答案，再把该答案加入数据集中，之后使用该数据集微调模型，并且还能够不断重复这一过程达到迭代优化的效果。这一过程（技术）叫做STaR，伪代码如下：
-   ![](pic\3.png)
+   ![](https://raw.githubusercontent.com/mattian7/figure/main/img/3.png)
 
 4. **PaLM: Scaling Language Modeling with Pathways.** [[pdf](https://arxiv.org/abs/2204.02311)] 2022.4   
 
