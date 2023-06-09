@@ -135,7 +135,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     ![Image text](https://raw.githubusercontent.com/mattian7/CoT-Papers-Note/main/pic/5.png)
 
-    这篇可以配合第2篇一起看，第2篇主要是引导语言模型在产生最终答案之前生成一系列推理步骤，并使用self-consistency机制获得较好的结果。在这种思路的基础上，这篇研究沿用了这种“条条大路通罗马”的思路，并且更侧重**多元性**(多元性的prompt$\rightarrow$多元性的推理步骤$\rightarrow$多元性的答案)
+    这篇可以配合第2篇一起看，第2篇主要是引导语言模型在产生最终答案之前生成一系列推理步骤，并使用self-consistency机制获得较好的结果。在这种思路的基础上，这篇研究沿用了这种“条条大路通罗马”的思路，并且更侧重**多元性**(多元性的prompt -> 多元性的推理步骤 -> 多元性的答案)
 
     除了多元性，这个工作还有两个关键创新：
 
@@ -148,7 +148,7 @@ A trend starts from "Chain of Thought Prompting Elicits Reasoning in Large Langu
 
     **Voting verifier如何实现**：
 
-    目标函数：$f(x_i,z_i,y_i)$，其中$x_i$表示第i个问题，$z_i$表示LLM生成的推理路径，$y_i$表示该路径的答案。f(·)就是verifier。为了训练这个verifier，我们可以使用范例集E。对于E中的每个$(\bar{x},\bar{z},\bar{y})$，让LLM生成一系列推理路径和答案$(z_1,y_1),(z_2,y_2)...(z_m,y_m)$，对于那些$y_i = \bar{y}$的数据，就把$<(\bar{x},z_i,y_i),1>$加入训练集D，否则把$<(\bar{x},z_i,y_i),0>$加入训练集D。之后使用二元交叉熵损失函数训练verifier：
+    目标函数：f(xi,zi,yi)，其中x_i表示第i个问题，z_i表示LLM生成的推理路径，y_i表示该路径的答案。f(·)就是verifier。为了训练这个verifier，我们可以使用范例集E。对于E中的每个(\bar{x},\bar{z},\bar{y})，让LLM生成一系列推理路径和答案(z1,y1),(z2,y2)...(zm,ym)，对于那些yi = \bar{y}的数据，就把<(\bar{x},zi,yi),1>加入训练集D，否则把<(\bar{x},zi,yi),0>加入训练集D。之后使用二元交叉熵损失函数训练verifier：
     $$
     L_0=\sum^{|D|}_{i=1}BCE(label_i,f(input_i))
     $$
